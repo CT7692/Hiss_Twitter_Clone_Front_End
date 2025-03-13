@@ -1,0 +1,22 @@
+<div class="container">
+    <h2 class="display-3 text-center">Profiles</h2>
+
+    <div class="row">
+        <div class="col-sm-3" *ngFor="let user of users">
+            <div id="profile" class="d-flex mt-3">
+                <div class="col">
+                    <a routerLink="/user/{{user?.name}}">
+                        <img src="/{{user?.imageURL}}" alt="profile pic" class="my-4 mx-2">
+                    </a>
+                </div>
+            
+                <div class="col">
+                    <div class="row">
+                        <a class="mt-5 align-items-center" 
+                        routerLink="/user/{{user?.name}}">&#64;{{user?.name}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

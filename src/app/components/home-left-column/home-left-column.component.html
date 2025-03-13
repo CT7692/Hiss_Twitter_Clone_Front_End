@@ -1,0 +1,24 @@
+<div class="mx-3 d-grid justify-content-center">
+
+    <div class="row">
+        <img src="/{{user?.imageURL}}" alt="profile pic" class="m-2">
+    </div>
+
+    <div class="row">
+        <h1 class="display-4 text-center">
+            {{user?.name}}
+        </h1>
+    </div>
+
+    <div class="row">
+        <a routerLink="/tweet" class="btn btn-primary mt-3 w-75 profileButton">Write Tweet</a>
+    </div>
+
+    <div class="row">
+        <a routerLink="/update_pic" class="btn btn-primary mt-3 w-75 profileButton">Update Image</a>
+    </div>
+
+    <div class="row">
+        <a routerLink="/update_password" class="btn btn-primary my-3 w-75 profileButton">Update Password</a>
+    </div>
+</div>

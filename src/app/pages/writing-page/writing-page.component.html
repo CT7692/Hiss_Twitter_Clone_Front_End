@@ -1,0 +1,61 @@
+<app-navbar></app-navbar>
+<h1 class="display-3 text-center my-5">What's on your mind?</h1>
+
+<div class="d-flex justify-content-center">
+    <div class="{{alertClass}} w-25 justify-content-center mt-2" role="alert">
+        {{message}}
+    </div>
+</div>
+
+<div *ngIf="!currentPath.includes('comment')">
+    <form id="myForm" class="w-50 pt-3" [formGroup]="tweetForm" (submit)="createTweet()">
+    
+        <div class="form-group">
+            
+            <textarea 
+                formControlName="tweetContent" 
+                class="form-control"
+                rows="3"
+                [class.is-invalid]="tweetContent?.invalid && tweetContent?.touched"></textarea>
+    
+            <div *ngIf="tweetContent?.errors && tweetContent?.touched">
+                <small 
+                    class="text-danger text-center"
+                    *ngIf="tweetContent?.errors?.['required']"
+                    >Content required.</small>
+            </div>    
+        </div>
+    
+        <input type="submit" 
+            class="btn btn-primary bg-gradient btn-block mt-3 w-100"
+            [disabled]="tweetForm.invalid">
+    </form>
+</div>
+
+<div *ngIf="currentPath.includes('comment')">
+    <form id="myForm" class="w-50 pt-3" [formGroup]="commentForm" (submit)="createComment()">
+    
+        <div class="form-group">
+            
+            <textarea 
+                formControlName="commentContent" 
+                class="form-control"
+                rows="3"
+                [class.is-invalid]="commentContent?.invalid && commentContent?.touched"></textarea>
+    
+            <div *ngIf="commentContent?.errors && commentContent?.touched">
+                <small 
+                    class="text-danger text-center"
+                    *ngIf="commentContent?.errors?.['required']"
+                    >Content required.</small>
+            </div>    
+        </div>
+    
+        <input type="submit" 
+            class="btn btn-primary bg-gradient btn-block mt-3 w-100"
+            [disabled]="commentForm.invalid">
+    </form>
+</div>
+
+
+<app-footer></app-footer>
