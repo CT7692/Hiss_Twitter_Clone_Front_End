@@ -11,16 +11,40 @@ import { WritingPageComponent } from './pages/writing-page/writing-page.componen
 import { EditPageComponent } from './pages/edit-page/edit-page.component';
 
 export const routes: Routes = [
-    {path: '', pathMatch: 'full', redirectTo: 'home'},
-    {path: "login", component: LoginPageComponent},
-    {path: "register", component: RegisterPageComponent},
-    {path: "home", component: HomepageComponent, canActivate: [AuthGuard]},
-    {path: "update_password", component: ChangePasswordPageComponent, canActivate: [AuthGuard]},
-    {path: "update_pic", component: ChangePicPageComponent, canActivate: [AuthGuard]},
-    {path: "users", component: ProfilesPageComponent, canActivate: [AuthGuard]},
-    {path: "user/:name", component: SingleProfilePageComponent, canActivate: [AuthGuard]},
-    {path: "tweet", component: WritingPageComponent, canActivate: [AuthGuard]},
-    {path: "tweet/:tweetID/comment", component: WritingPageComponent, canActivate: [AuthGuard]},
-    {path: "tweet/:tweetID", component: EditPageComponent, canActivate: [AuthGuard]},
-    {path: "comment/:commentID", component: EditPageComponent, canActivate: [AuthGuard]}
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
+  { path: 'login', component: LoginPageComponent },
+  { path: 'register', component: RegisterPageComponent },
+  { path: 'home', component: HomepageComponent, canActivate: [AuthGuard] },
+  {
+    path: 'update_password',
+    component: ChangePasswordPageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'update_pic',
+    component: ChangePicPageComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'users', component: ProfilesPageComponent, canActivate: [AuthGuard] },
+  {
+    path: 'user/:name',
+    component: SingleProfilePageComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'tweet', component: WritingPageComponent, canActivate: [AuthGuard] },
+  {
+    path: 'tweet/:tweetID/comment',
+    component: WritingPageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'tweet/:tweetID',
+    component: EditPageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'comment/:commentID',
+    component: EditPageComponent,
+    canActivate: [AuthGuard],
+  },
 ];

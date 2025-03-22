@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TweetComponent } from '../tweet/tweet.component';
 import { CommonModule } from '@angular/common';
 import { DataService } from '../../services/data.service';
@@ -18,6 +18,8 @@ import { CommentStatPostObject } from '../../entities/commentStatPostObject';
   styleUrl: './profile-right-column.component.css',
 })
 export class ProfileRightColumnComponent {
+  @Output() profileChange = new EventEmitter<any>();
+
   name: any;
   currentUsername: any;
   tweets: Tweet[] = [];
@@ -31,6 +33,29 @@ export class ProfileRightColumnComponent {
     private jwtService: JwtService,
     private activatedRoute: ActivatedRoute
   ) {
+    this.ngOnInit();
+  }
+
+  diffProfileClicked(newName: any) {
+    this.currentUsername = this.jwtService.decodeToken().sub;
+    this.name = newName;
+    this.dataService
+      .getTweetsByName(this.name)
+      .subscribe((response: Tweet[]) => {
+        this.tweets = response;
+
+        for (let tweet of this.tweets) {
+          this.dataService
+            .getComments(tweet.tweetID)
+            .subscribe((response: Comment[]) => {
+              tweet.comments = response;
+            });
+        }
+      });
+    this.profileChange.emit(this.name);
+  }
+
+  ngOnInit() {
     this.currentUsername = this.jwtService.decodeToken().sub;
     this.name = this.activatedRoute.snapshot.paramMap.get('name');
 

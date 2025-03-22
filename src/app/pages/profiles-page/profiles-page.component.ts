@@ -11,5 +11,5 @@ import { ProfileComponent } from '../../components/profile/profile.component';
   styleUrl: './profiles-page.component.css'
 })
 export class ProfilesPageComponent {
-  
+
 }

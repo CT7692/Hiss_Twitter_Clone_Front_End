@@ -1,16 +1,15 @@
 <div class="fluid-container">
-    <app-navbar></app-navbar>
+  <app-navbar></app-navbar>
 
-    <div class="m-3 d-flex">
-        <div id="leftColumnProfile" class="bg-dark bg-gradient rounded-5">
-            <app-profile-left-column></app-profile-left-column>
-        </div>
-
-        <div id="rightColumnProfile" class="mx-3 bg-dark bg-gradient rounded-5">
-            <app-profile-right-column></app-profile-right-column>
-        </div>
+  <div class="m-3 d-flex">
+    <div id="leftColumnProfile" class="bg-dark bg-gradient rounded-5">
+      <app-profile-left-column></app-profile-left-column>
     </div>
 
-    <app-footer></app-footer>
-</div>
+    <div id="rightColumnProfile" class="mx-3 bg-dark bg-gradient rounded-5">
+      <app-profile-right-column (profileChange)="onProfileChange($event)"></app-profile-right-column>
+    </div>
+  </div>
 
+  <app-footer></app-footer>
+</div>
